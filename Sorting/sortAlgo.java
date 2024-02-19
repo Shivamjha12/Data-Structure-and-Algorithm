@@ -49,6 +49,35 @@ public class sortAlgo{
         mergeSort(arr, mid+1, high);
         merge(arr,low,mid,high);
     }
+    int partition(int[] arr,int low,int high){ // partition function is used in quicksort to place the pivot to its correct position
+        int pivot = arr[low];
+        int i=low;
+        int j=high;
+        while(i<j){
+        while(arr[i]<=pivot && i<=high-1){
+            i++;
+        }
+        while(arr[j]>pivot && j>=low+1){
+            j--;
+        }
+        if(i<j){
+            swap(arr,i,j);
+        }
+        swap(arr,low,j);
+        }
+        return j;
+    }
+
+    public void quickSort(int[] arr,int low,int high){ // In quicksoert we select a pivot and place it to its correct place aacording to sequence using partition function.
+        if(low<high){
+            int pivot = partition(arr,low,high);
+            quickSort(arr,low,pivot-1);
+            quickSort(arr,pivot+1,high);
+        }
+    }
+
+
+
     // ITERATIVE SORTING ALGORITHMS
     public void bubbleSort(int[]arr){
         System.out.println("Bubble Sort: It means push the maximum element to the end of the array using adjacent element comparison/swaps");
@@ -108,7 +137,7 @@ public class sortAlgo{
         sortAlgo sort = new sortAlgo();
         System.out.println("Before Sorting");
         sort.printArr(arr);
-        sort.mergeSort(arr, 0, arr.length-1);
+        sort.quickSort(arr, 0, arr.length-1);
         System.out.println("After Sorting ");
         sort.printArr(arr);
 
