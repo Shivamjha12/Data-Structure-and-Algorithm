@@ -49,7 +49,8 @@ public class sortAlgo{
         mergeSort(arr, mid+1, high);
         merge(arr,low,mid,high);
     }
-    int partition(int[] arr,int low,int high){ // partition function is used in quicksort to place the pivot to its correct position
+
+    public int partition(int[] arr,int low,int high){ // partition function is used in quicksort to place the pivot to its correct position
         int pivot = arr[low];
         int i=low;
         int j=high;
@@ -63,8 +64,9 @@ public class sortAlgo{
         if(i<j){
             swap(arr,i,j);
         }
-        swap(arr,low,j);
+        
         }
+        swap(arr,low,j);
         return j;
     }
 
@@ -133,7 +135,7 @@ public class sortAlgo{
     
     }
     public static void main(String args[]) {
-        int[] arr = new int[]{6,2,5,1,3,4};
+        int[] arr = new int[]{2,3,8,1,6,4};
         sortAlgo sort = new sortAlgo();
         System.out.println("Before Sorting");
         sort.printArr(arr);
